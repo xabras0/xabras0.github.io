@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>repl.it</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <script >var pos = 0,pos2 = 0, test, test_status, question, choice, choices, chA, chB, chC, chD, tipo1 = 0, tipo2 = 0, tipo3 = 0, tipo4 = 0, correct = 0, tuTipo;
+var questions = [
+    [ "Estoy pendiente del \“¿Qué dirán?\” para opinar o actuar.", "0", "1", "2", "3" ],
+	[ "Procuro convencer a otros de que tengo la razón.", "0", "1", "2", "3" ],
+	[ "Prefiero no hablar de mis sentimientos.", "0", "1", "2", "3" ],
+
+	[ "Voy por la tangente para no contestar preguntas comprometedoras.", "0", "1", "2", "3" ],
+	[ "Escucho cuidadosamente a los demás para poder comprenderlos.", "0", "1", "2", "3" ],
+	[ "Dicen que tengo buenos criterios de juicio y evaluación.", "0", "1", "2", "3" ],
+	[ "Soy concreto/a, especifico/a y preciso/a.", "0", "1", "2", "3" ],
+	[ "Estoy dispuesto/a a cambiar mi punto de vista u opinión.", "0", "1", "2", "3" ],
+	[ "Evito decir cosas que podrían incomodar a los demás.", "0", "1", "2", "3" ],
+	[ "Encuentro fallas en lo que dicen y argumentan los demás.", "0", "1", "2", "3" ],
+	[ "Soy escéptico hasta que me muestren pruebas.", "0", "1", "2", "3" ],
+	[ "Tiendo a divagar o a cambiar de tema en una conversación.", "0", "1", "2", "3" ],
+	[ "Comprendo y respeto los diferentes valores y creencias.", "0", "1", "2", "3" ],
+	[ "Soy ordenado/a y disciplinado/a en mi manera de conversar.", "0", "1", "2", "3" ],
+	[ "Fijo metas realistas y claras en una negociación.", "0", "1", "2", "3" ],
+	[ "Busco métodos y soluciones innovadoras o diferentes.", "0", "1", "2", "3" ],
+	[ "Me conformo con lo que dice o quiere la mayoría.", "0", "1", "2", "3" ],
+	[ "Juzgo rápidamente, aun cuando no tenga todos los datos.", "0", "1", "2", "3" ],
+	[ "Busco persuadir a los demás con lógica ante cualquier situación.", "0", "1", "2", "3" ],
+	[ "Tiendo a hacer preguntas o comentarios fuera de contexto.", "0", "1", "2", "3" ],
+	[ "Busco reconciliar diferencias de opinión o de valores.", "0", "1", "2", "3" ],
+	[ "Soy bueno/a para evaluar resultados y rendimiento.", "0", "1", "2", "3" ],
+	[ "Averiguo todo lo que puedo antes de analizar algo.", "0", "1", "2", "3" ],
+	[ "Soy espontaneo/a y creativo/a.", "0", "1", "2", "3" ],
+	[ "Uso indirectas o comentarios \“entre chiste y chanza\”.", "0", "1", "2", "3" ],
+	[ "Uso mi autoridad para lograr lo que considero que es lo mejor.", "0", "1", "2", "3" ],
+	[ "Procuro justificar o explicar mis errores.", "0", "1", "2", "3" ],
+	[ "Hago bromas y chistes cuando regateo o negocio.", "0", "1", "2", "3" ],
+	[ "Muestro calidez y compasión.", "0", "1", "2", "3" ],
+	[ "Respeto y hago respetar la ética personal o profesional.?", "0", "1", "2", "3" ],
+	[ "Sintetizo e integro ideas.", "0", "1", "2", "3" ],
+	[ "Alivio la tensión grupal con mi alegría.", "0", "1", "2", "3" ],
+	[ "Tiendo a adivinar lo que quieren o lo que quieren decir los demás.", "0", "1", "2", "3" ],
+	[ "Quiero \“ganarle\” al otro en un debate o discusión.", "0", "1", "2", "3" ],
+	[ "\"Dicto cátedra\” o sermoneo cuando lo considero necesario.", "0", "1", "2", "3" ],
+	[ "Soy \“coqueto/a”\ para lograr lo que quiero del otro.", "0", "1", "2", "3" ],
+	[ "Elogio libremente a las personas que se lo merecen.", "0", "1", "2", "3" ],
+	[ "Confronto las incongruencias o inconsistencias de otros.", "0", "1", "2", "3" ],
+	[ "Uso lógica en mi razonamiento.", "0", "1", "2", "3" ],
+	[ "Soy descomplicado/a y sencillo/a en mi manera de hablar.", "0", "1", "2", "3" ],
+	[ "Tiendo a decir \“Si\” aun cuando quisiera decir \“No\”.", "0", "1", "2", "3" ],
+	[ "Tengo posturas legalistas o moralistas ante los sucesos.", "0", "1", "2", "3" ],
+	[ "Me fijo en detalles, aunque sean superfluos o sin importancia.", "0", "1", "2", "3" ],
+	[ "Cambio rápidamente de estado anímico o de humor.", "0", "1", "2", "3" ],
+	[ "Acepto la ambigüedad y la ambivalencia de otros.", "0", "1", "2", "3" ],
+	[ "Pido directamente lo que quiero y necesito.", "0", "1", "2", "3" ],
+	[ "Investigo todas las posibles opciones.", "0", "1", "2", "3" ],
+	[ "Acepto cambios sin problemas.", "0", "1", "2", "3" ],
+	[ "Evito una discusión hasta donde sea posible.", "0", "1", "2", "3" ],
+	[ "Dicen que soy criticón/a o difícil de complacer.", "0", "1", "2", "3" ],
+	[ "Valoro sobre todo la objetividad.", "0", "1", "2", "3" ],
+	[ "Me es difícil concentrarme por mucho tiempo.", "0", "1", "2", "3" ],
+	[ "Soy empático/a y comprensivo/a.", "0", "1", "2", "3" ],
+	[ "puedo decir \“¡No!\”, sin vacilar después.", "0", "1", "2", "3" ],
+	[ "Logro distinguir entre lo esencial y lo accesorio.", "0", "1", "2", "3" ],
+	[ "Hablo de mis cosas en forma auténtica y sin rodeos.", "0", "1", "2", "3" ],
+	[ "Procuro convencer a la persona con quien converso.", "0", "1", "2", "3" ],
+	[ "Evalúo lo que me dicen según mis valores personales.", "0", "1", "2", "3" ],
+	[ "Muestro poca emoción.", "0", "1", "2", "3" ],
+	[ "Hablo impulsivamente.", "0", "1", "2", "3" ],
+	[ "Procuro establecer una buena relación antes de tratar un tema.", "0", "1", "2", "3" ],
+	[ "Doy mi opinión aun cuando sea impopular.", "0", "1", "2", "3" ],
+	[ "Tiendo a analizar todo lo que me sucede.", "0", "1", "2", "3" ],
+	[ "Me gusta enfrentarme con nuevos desafíos y problemas.", "0", "1", "2", "3" ],
+	[ "Me dejo manipular o influenciar con sentimientos de culpa.", "0", "1", "2", "3" ],
+	[ "Soy muy estricto en cuestiones morales y éticas.", "0", "1", "2", "3" ],
+	[ "Cuando converso con alguien, busco la causa de todo.", "0", "1", "2", "3" ],
+	[ "Cambio de idea o de parecer si alguien es muy persuasivo.", "0", "1", "2", "3" ],
+	[ "Reconozco y resalto el valor de la persona con quien hablo.", "0", "1", "2", "3" ],
+	[ "Apelo al sentido de justicia con los demás.", "0", "1", "2", "3" ],
+	[ "Soy hábil para seguir instrucciones lógicas paso a paso.", "0", "1", "2", "3" ],
+	[ "Converso con explosiones de energía.", "0", "1", "2", "3" ],
+	[ "Hago favores no solicitados.", "0", "1", "2", "3" ],
+	[ "Procuro motivar al otro a que haga lo que yo quiero.", "0", "1", "2", "3" ],
+	[ "Confío poco en la inspiración y la intuición.", "0", "1", "2", "3" ],
+	[ "Me aburro cuando se acaba la novedad de algo o de alguien.", "0", "1", "2", "3" ],
+	[ "Muestro tolerancia y comprensión con otros.", "0", "1", "2", "3" ],
+	[ "Cumplo lo que me comprometo a cumplir.", "0", "1", "2", "3" ],
+	[ "Soy muy sistemático cuando discuto, regateo o negocio.", "0", "1", "2", "3" ],
+	[ "Me proyecto hacia el futuro en las conversaciones.", "0", "1", "2", "3" ],
+	[ "Me siento defraudado/a si no recibo los elogios merecidos.", "0", "1", "2", "3" ],
+	[ "Uso amenazas abiertas o disfrazadas para que me cumplan.", "0", "1", "2", "3" ],
+	[ "Resalto las fallas de lógica en los argumentos de los demás.", "0", "1", "2", "3" ],
+	[ "Soy temperamental y cambiante.", "0", "1", "2", "3" ],
+	[ "Soy sensible a los demás y a sus necesidades.", "0", "1", "2", "3" ],
+	[ "Estoy dispuesto/a a regatear o negociar diferencias.", "0", "1", "2", "3" ],
+	[ "Evalúo todos los pros y los contras antes de decidir algo.", "0", "1", "2", "3" ],
+	[ "Mi entusiasmo anima la gente.", "0", "1", "2", "3" ],
+	[ "La gente dice que tiendo a ser alcahueta.", "0", "1", "2", "3" ],
+	[ "La gente dice que tiendo a ser criticón.", "0", "1", "2", "3" ],
+	[ "La gente dice que tiendo a ser fanático con los detalles.", "0", "1", "2", "3" ],
+	[ "La gente dice que tiendo a ser distractor.", "0", "1", "2", "3" ],
+	[ "La gente dice que tiendo a ser fácilmente manipulado por otros.", "0", "1", "2", "3" ],
+	[ "La gente dice que tiendo a ser arrogante.", "0", "1", "2", "3" ],
+	[ "La gente dice que tiendo a ser escéptico.", "0", "1", "2", "3" ],
+	[ "La gente dice que tiendo a ser cambiante.", "0", "1", "2", "3" ],
+	[ "La gente dice que tiendo a ser metiche.", "0", "1", "2", "3" ],
+	[ "La gente dice que tiendo a ser intolerante.", "0", "1", "2", "3" ],
+	[ "La gente dice que tiendo a ser manipulador con \“lógica\”.", "0", "1", "2", "3" ],
+	[ "La gente dice que tiendo a ser temperamental.", "0", "1", "2", "3" ],
+	[ "La gente dice que tiendo a ser dependiente de otros.", "0", "1", "2", "3" ],
+	[ "La gente dice que tiendo a ser autoritario.", "0", "1", "2", "3" ],
+	[ "La gente dice que tiendo a ser \“sermoneador\”.", "0", "1", "2", "3" ],
+	[ "La gente dice que tiendo a ser \“mamagallista\”.", "0", "1", "2", "3" ],
+	[ "La gente dice que tiendo a ser demasiado complaciente.", "0", "1", "2", "3" ],
+  [ "La gente dice que tiendo a ser muy competitivo.", "0", "1", "2", "3" ], 
+  [ "La gente dice que tiendo a ser muy apegado a las cifras y datos.", "0", "1", "2", "3" ],
+  [ "La gente dice que tiendo a ser irreverente o irrespetuoso.", "0", "1", "2", "3" ],
+  [ "La gente dice que tiendo a ser fácilmente persuadido.", "0", "1", "2", "3" ],
+  [ "La gente dice que tiendo a ser legalista.", "0", "1", "2", "3" ],
+  [ "La gente dice que tiendo a ser frío y calculador.", "0", "1", "2", "3" ],
+	[ "La gente dice que tiendo a ser infantil.", "0", "1", "2", "3" ]
+];
+var tipos = [0,0,0,0];
+function _(x){
+	return document.getElementById(x);
+}
+function renderQuestion(){
+	test = _("test");
+	if(pos >= questions.length){
+    tuTipo= Math.max(tipos[0],tipos[1],tipos[2],tipos[3]);
+    if (tuTipo == tipos[0]){
+      test.innerHTML = "<h2>Tu tipo es Sustentador</h2>"/*+"<h3>Tipo 1 : "+tipos[0]+ "<br>"+" Tipo 2 : "+tipos[1] + "<br>"+" Tipo 3 : "+tipos[2] +"<br>"+ "Tipo 4 : "+tipos[3]+ "</h3>"*/;
+      		_("test_status").innerHTML = "Test Completed";
+    }
+    else if (tuTipo == tipos[1]){
+      test.innerHTML = "<h2>Tu tipo es Controlador</h2>"/*+"<h3>Tipo 1 : "+tipos[0]+ "<br>"+" Tipo 2 : "+tipos[1] + "<br>"+" Tipo 3 : "+tipos[2] +"<br>"+ "Tipo 4 : "+tipos[3]+ "</h3>"*/;
+      		_("test_status").innerHTML = "Test Completed";
+    }
+    else if (tuTipo == tipos[2]){
+      test.innerHTML = "<h2>Tu tipo es Analitico</h2>"/*+"<h3>Tipo 1 : "+tipos[0]+ "<br>"+" Tipo 2 : "+tipos[1] + "<br>"+" Tipo 3 : "+tipos[2] +"<br>"+ "Tipo 4 : "+tipos[3]+ "</h3>"*/;
+      		_("test_status").innerHTML = "Test Completed";
+    }
+    else if (tuTipo == tipos[3]){
+      test.innerHTML = "<h2>Tu tipo es Promotor</h2>"/*+"<h3>Tipo 1 : "+tipos[0]+ "<br>"+" Tipo 2 : "+tipos[1] + "<br>"+" Tipo 3 : "+tipos[2] +"<br>"+ "Tipo 4 : "+tipos[3]+ "</h3>"*/;
+      		_("test_status").innerHTML = "Test Completed";
+    }
+
+
+
+		pos = 0;
+		correct = 0;
+    
+		return false;
+	}
+	_("test_status").innerHTML = "Pregunta "+(pos+1)+" de "+questions.length;
+	question = questions[pos][0];
+	chA = questions[pos][1];
+	chB = questions[pos][2];
+	chC = questions[pos][3];
+  chD = questions[pos][4];
+	test.innerHTML = "<h3>"+question+"</h3>";
+	test.innerHTML += "<input type='radio' name='choices' value='0' > "+chA+"<br>";
+	test.innerHTML += "<input type='radio' name='choices' value='1' > "+chB+"<br>";
+	test.innerHTML += "<input type='radio' name='choices' value='2' > "+chC+"<br>";
+  test.innerHTML += "<input type='radio' name='choices' value='3' > "+chD+"<br><br>";
+	test.innerHTML += "<button onclick='checkAnswer()'>Submit Answer</button>";
+}
+function checkAnswer(){
+	choices = document.getElementsByName("choices");
+  var formValid = false;
+  var i = 0;
+  while (!formValid && i <choices.length) {
+      if (choices[i].checked) formValid = true;
+      i++;        
+  }
+  if (!formValid) {
+    alert("Debes elegir una opcion!");
+    
+
+    }
+  else {
+    for(var i=0; i<choices.length; i++){
+      if(choices[i].checked){
+        choice = choices[i].value;
+      }
+    }
+    if (pos2 == 0){
+    tipos[0] = tipos[0] + parseInt(choice);
+  }
+      else if (pos2 == 1){
+    tipos[1] = tipos[1] + parseInt(choice);
+  }
+    else if (pos2 == 2){	
+    tipos[2] = tipos[2] + parseInt(choice);
+  }
+    else if (pos2 == 3){
+    tipos[3] = tipos[3] + parseInt(choice);
+  }
+    
+    pos2++;
+    if (pos2 == 4){
+    pos2 = 0;
+  }
+    pos++;
+    renderQuestion();
+  }
+}
+window.addEventListener("load", renderQuestion, false);</script>
+    <h2 id="test_status"></h2>
+    <div id="test"></div>
+  </body>
+</html>
