@@ -155,14 +155,14 @@ function renderQuestion(){
     
 		return false;
 	}
-		_("test_status").innerHTML = "Evalúa de 0 a 3 cada una de las circunstancias acorde a la siguiente escala:"+"<br>"+
+	_("test_description").innerHTML = "Evalúa de 0 a 3 cada una de las circunstancias acorde a la siguiente escala:"+"<br>"+"<br>"+
 
-"Las siguientes frases describen diferentes actitudes que tenemos casi todos los seres humanos a un grado u otro. Después de leer cada frase, coloca dentro de los paréntesis el número que corresponde a la frecuencia con la que la frase te describe a ti en tus relaciones con los demás, según la siguiente escala:"+"<br>"+
+"Las siguientes frases describen diferentes actitudes que tenemos casi todos los seres humanos a un grado u otro. Después de leer cada frase, coloca dentro de los paréntesis el número que corresponde a la frecuencia con la que la frase te describe a ti en tus relaciones con los demás, según la siguiente escala:"+"<br>"+"<br>"+
 
 "0 = Nunca o casi nunca soy o hago así."+"<br>"+
 "1 = A veces soy o hago así."+"<br>"+
 "2 = Muchas veces soy o hago así."+"<br>"+
-"3 = Casi siempre o siempre soy o hago así."+"<br>";
+"3 = Casi siempre o siempre soy o hago así."+"<br>";	
 	_("test_status").innerHTML = "Pregunta "+(pos+1)+" de "+questions.length;
 	question = questions[pos][0];
 	chA = questions[pos][1];
@@ -216,7 +216,8 @@ function checkAnswer(){
     renderQuestion();
   }
 }
-window.addEventListener("load", renderQuestion, false);</script>
+window.addEventListener("load", renderQuestion, false);</script>	
+	<p id="test_description"></p>  
     <h2 id="test_status"></h2>
     <div id="test"></div>
   </body>
